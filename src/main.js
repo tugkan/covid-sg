@@ -24,13 +24,12 @@ Apify.main(async () => {
             const deaths = parseInt($($($('table[class=""]:not([border]) tr').get(5)).find('td').get(0)).text().trim(), 10);
             const discharged = parseInt($($($('table[class=""]:not([border]) tr').get(5)).find('td').get(1)).text().trim(), 10);
 
-
             const data = {
                 infected: stableHospitalized + criticalHospitalized,
                 deceased: deaths,
                 recovered: discharged,
                 sourceUrl,
-                lastUpdatedAtApify: new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1, now.getMinutes())).toISOString(),
+                lastUpdatedAtApify: new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes())).toISOString(),
                 readMe: 'https://apify.com/tugkan/covid-sg',
             };
 
