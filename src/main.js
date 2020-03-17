@@ -19,13 +19,17 @@ Apify.main(async () => {
             log.info('Page loaded.');
             const now = new Date();
 
+            const activeCases = parseInt($($($('table[class=""]:not([border]) tr').get(1)).find('td').get(0)).text().trim(), 10);
             const stableHospitalized = parseInt($($($('table[class=""]:not([border]) tr').get(3)).find('td').get(0)).text().trim(), 10);
             const criticalHospitalized = parseInt($($($('table[class=""]:not([border]) tr').get(3)).find('td').get(1)).text().trim(), 10);
             const deaths = parseInt($($($('table[class=""]:not([border]) tr').get(5)).find('td').get(0)).text().trim(), 10);
             const discharged = parseInt($($($('table[class=""]:not([border]) tr').get(5)).find('td').get(1)).text().trim(), 10);
 
             const data = {
-                infected: stableHospitalized + criticalHospitalized,
+                infected: stableHospitalized + criticalHospitalized + activeCases,
+                stableHospitalized,
+                criticalHospitalized,
+                activeCases,
                 deceased: deaths,
                 recovered: discharged,
                 sourceUrl,
