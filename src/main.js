@@ -26,7 +26,7 @@ Apify.main(async () => {
             const discharged = parseInt($($($('table[class=""]:not([border]) tr').get(5)).find('td').get(1)).text().trim(), 10);
 
             const data = {
-                infected: deaths + recovered + activeCases,
+                infected: deaths + discharged + activeCases,
                 stableHospitalized,
                 criticalHospitalized,
                 activeCases,
