@@ -19,11 +19,11 @@ Apify.main(async () => {
             log.info('Page loaded.');
             const now = new Date();
 
-            const activeCases = parseInt($($($('table[class=""]:not([border]) tr').get(1)).find('td').get(0)).text().trim(), 10);
-            const stableHospitalized = parseInt($($($('table[class=""]:not([border]) tr').get(3)).find('td').get(0)).text().trim(), 10);
-            const criticalHospitalized = parseInt($($($('table[class=""]:not([border]) tr').get(3)).find('td').get(1)).text().trim(), 10);
-            const deaths = parseInt($($($('table[class=""]:not([border]) tr').get(5)).find('td').get(0)).text().trim(), 10);
-            const discharged = parseInt($($($('table[class=""]:not([border]) tr').get(5)).find('td').get(1)).text().trim(), 10);
+            const activeCases = parseInt($($($('h3 table[class=""]:not([border]) tr').get(1)).find('td').get(0)).text().trim().replace(/\D/,''), 10);
+            const stableHospitalized = parseInt($($($('h3 table[class=""]:not([border]) tr').get(3)).find('td').get(0)).text().trim().replace(/\D/,''), 10);
+            const criticalHospitalized = parseInt($($($('h3 table[class=""]:not([border]) tr').get(3)).find('td').get(1)).text().trim().replace(/\D/,''), 10);
+            const deaths = parseInt($($($('h3 table[class=""]:not([border]) tr').get(5)).find('td').get(0)).text().trim().replace(/\D/,''), 10);
+            const discharged = parseInt($($($('h3 table[class=""]:not([border]) tr').get(5)).find('td').get(1)).text().trim().replace(/\D/,''), 10);
 
             const data = {
                 infected: deaths + discharged + activeCases,
